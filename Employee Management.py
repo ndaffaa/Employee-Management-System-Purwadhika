@@ -80,7 +80,7 @@ def display_employee_table(employee_data):
         elif action == "2":
             try:
                 index = int(input("Enter the employee number to view details: "))
-                if 0 <= index < len(employee_data):
+                if 0 <= index < len(employee_data):  # Changed condition from <= to <
                     employee = employee_data[index]
                     generate_input_summary(First_name=employee[0], Last_name=employee[1], Role=employee[2], Division=employee[3], Years_employed=employee[4])
                 else:
@@ -92,6 +92,7 @@ def display_employee_table(employee_data):
         else:
             print("Invalid choice. Please enter 1, 2, or 3.")
 
+
 # Function to display the list of employees
 def display_employees():
     if employees:
@@ -99,6 +100,7 @@ def display_employees():
         display_employee_table(employees)
     else:
         print("No employees in the list.")
+
 
 # Function to add a new employee
 def add_employee():
@@ -113,7 +115,7 @@ def add_employee():
             
             last_name = input("Enter employee last name (type 'exit' to cancel): ").strip().title()
             if last_name.lower() == 'exit':
-                print("Employee addition cancelled.")
+                
                 return  # Exit the function
             if not last_name.replace(' ','').isalpha():
                 raise ValueError("Last name must contain only alphabetic characters or cannot be empty.")
@@ -199,7 +201,7 @@ def delete_employee():
             else:
                 print("Invalid choice. Please enter 'yes' or 'no'.")
         except (ValueError, IndexError):
-            print("Invalid input. Please enter a valid index or 'exit' to cancel.")
+            print("Invalid input. Please enter a number between 0 and", len(employees) - 1, " or 'exit' to cancel.")
 
 
 # Function to update employee information
