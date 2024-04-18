@@ -17,6 +17,16 @@ employees = [
 
 header = ["First Name", "Last Name", "Role", "Division", "Years Employed"]
 
+feature = ["Employee addition", "Employee deletion", "Employee update"]
+
+# Function to print cancelation massage
+def cancelation(feature):
+    print(f"{feature} cancelled.")
+
+# Function to print successful massage
+def success(feature):
+    print(f"{feature} successfully.")
+
 # Function to generate a summary of user input
 def generate_input_summary(**kwargs):
     print("\nSummary of Input:")
@@ -108,14 +118,14 @@ def add_employee():
         try:
             first_name = input("Enter employee first name (type 'exit' to cancel): ").strip().title()
             if first_name.lower() == 'exit':
-                print("Employee addition cancelled.")
+                cancelation(feature[0]) # Show cancelation massage
                 return  # Exit the function
             if not first_name.replace(' ','').isalpha():
                 raise ValueError("First name must contain only alphabetic characters or cannot be empty.")
             
             last_name = input("Enter employee last name (type 'exit' to cancel): ").strip().title()
             if last_name.lower() == 'exit':
-                
+                cancelation(feature[0]) # Show cancelation massage
                 return  # Exit the function
             if not last_name.replace(' ','').isalpha():
                 raise ValueError("Last name must contain only alphabetic characters or cannot be empty.")
@@ -127,21 +137,21 @@ def add_employee():
             
             role = input("Enter employee role (type 'exit' to cancel): ").strip().title()
             if role.lower() == 'exit':
-                print("Employee addition cancelled.")
+                cancelation(feature[0]) # Show cancelation massage
                 return  # Exit the function
             if not role.replace(' ','').isalpha():
                 raise ValueError("Role must contain only alphabetic characters or cannot be empty.")
             
             division = input("Enter employee division (type 'exit' to cancel): ").strip().title()
             if division.lower() == 'exit':
-                print("Employee addition cancelled.")
+                cancelation(feature[0]) # Show cancelation massage
                 return  # Exit the function
             if not division.replace(' ','').isalpha():
                 raise ValueError("Division must contain only alphabetic characters or cannot be empty.")
             
             years_employed = input("Enter years employed (type 'exit' to cancel): ").strip()
             if years_employed.lower() == 'exit':
-                print("Employee addition cancelled.")
+                cancelation(feature[0]) # Show cancelation massage
                 return  # Exit the function
             years_employed = int(years_employed)
             if years_employed < 0:
@@ -153,10 +163,11 @@ def add_employee():
             confirm = input(f"\nAre you sure you want to add {full_name} to the employee list? (yes/no): ").strip().lower()
             if confirm == 'yes':
                 employees.append([first_name, last_name, role, division, years_employed])
-                print("Employee added successfully.")
+                success(feature[0]) # Show successful massage
+
                 break  # Exit the loop if all data is valid
             elif confirm == 'no':
-                print("Employee addition cancelled.")
+                cancelation(feature[0]) # Show cancelation massage
                 return
             else:
                 print("Invalid choice. Please enter 'yes' or 'no'.")
@@ -178,7 +189,7 @@ def delete_employee():
 
             index = input("Enter the index of the employee to delete (type 'exit' to cancel): ").strip()
             if index.lower() == 'exit':
-                print("Employee deletion cancelled.")
+                cancelation(feature[1]) # Show cancelation massage
                 return
             index = int(index)
 
@@ -196,7 +207,7 @@ def delete_employee():
                 print(f"Employee '{employee[0]} {employee[1]}' deleted successfully.")
                 break
             elif confirm == 'no':
-                print("Employee deletion cancelled.")
+                cancelation(feature[1]) # Show cancelation massage
                 return
             else:
                 print("Invalid choice. Please enter 'yes' or 'no'.")
@@ -214,7 +225,12 @@ def update_employee():
         headers = header
         print(tabulate(employees, headers=headers, tablefmt="grid", showindex='always'))
         
-        index = int(input("Enter the index of the employee to update: "))
+        index = input("Enter the index of the employee to update: ")
+        if index.lower() == 'exit':
+                cancelation(feature[2]) # Show cancelation massage
+                return
+        index = int(index)
+        
         if index < 0 or index >= len(employees):
             raise ValueError("Invalid index.")
         
@@ -223,27 +239,27 @@ def update_employee():
 
         new_first_name = input("Enter new first name (leave empty to keep current or type 'exit' to cancel): ").strip().title()
         if new_first_name.lower() == 'exit':
-                print("Employee update cancelled.")
+                cancelation(feature[2]) # Show cancelation massage
                 return
         
         new_last_name = input("Enter new last name (leave empty to keep current or type 'exit' to cancel): ").strip().title()
         if new_last_name.lower() == 'exit':
-                print("Employee update cancelled.")
+                cancelation(feature[2]) # Show cancelation massage
                 return
         
         new_role = input("Enter new role (leave empty to keep current or type 'exit' to cancel): ").strip().title()
         if new_role.lower() == 'exit':
-                print("Employee update cancelled.")
+                cancelation(feature[2]) # Show cancelation massage
                 return
         
         new_division = input("Enter new division (leave empty to keep current or type 'exit' to cancel): ").strip().title()
         if new_division.lower() == 'exit':
-                print("Employee update cancelled.")
+                cancelation(feature[2]) # Show cancelation massage
                 return
         
         new_years_employed = input("Enter new years employed (leave empty to keep current or type 'exit' to cancel): ").strip()
         if new_years_employed.lower() == 'exit':
-                print("Employee update cancelled.")
+                cancelation(feature[2]) # Show cancelation massage
                 return
         
         # Generate summary of user input
@@ -272,8 +288,8 @@ def update_employee():
             return
         else:
             print("Invalid choice. Please enter 'yes' or 'no'.")
-    except ValueError as e:
-        print("Error:", e)
+    except (ValueError, IndexError):
+        print("Invalid input. Please enter a number between 0 and", len(employees) - 1, " or 'exit' to cancel.")
  
 
 # Main function
