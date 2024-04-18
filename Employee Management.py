@@ -225,7 +225,7 @@ def update_employee():
         headers = header
         print(tabulate(employees, headers=headers, tablefmt="grid", showindex='always'))
         
-        index = input("Enter the index of the employee to update: ")
+        index = input("Enter the index of the employee to update (type 'exit' to cancel): ")
         if index.lower() == 'exit':
                 cancelation(feature[2]) # Show cancelation massage
                 return
