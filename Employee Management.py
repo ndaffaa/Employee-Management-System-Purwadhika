@@ -135,14 +135,14 @@ def add_employee():
                 if f"{employee[0]} {employee[1]}" == full_name:
                     raise ValueError(f"Employee named {first_name} {last_name}  already exists. Please use the 'update' menu to change particular data.")
             
-            role = input("Enter employee role (type 'exit' to cancel): ").strip().title()
+            role = input("Enter employee role (type 'exit' to cancel): ").strip()
             if role.lower() == 'exit':
                 cancelation(feature[0]) # Show cancelation massage
                 return  # Exit the function
             if not role.replace(' ','').isalpha():
                 raise ValueError("Role must contain only alphabetic characters or cannot be empty.")
             
-            division = input("Enter employee division (type 'exit' to cancel): ").strip().title()
+            division = input("Enter employee division (type 'exit' to cancel): ").strip()
             if division.lower() == 'exit':
                 cancelation(feature[0]) # Show cancelation massage
                 return  # Exit the function
@@ -160,17 +160,18 @@ def add_employee():
             # Generate summary of user input
             generate_input_summary(First_name=first_name, Last_name=last_name, Role=role, Division=division, Years_employed=years_employed)
             
-            confirm = input(f"\nAre you sure you want to add {full_name} to the employee list? (yes/no): ").strip().lower()
-            if confirm == 'yes':
-                employees.append([first_name, last_name, role, division, years_employed])
-                success(feature[0]) # Show successful massage
-
-                break  # Exit the loop if all data is valid
-            elif confirm == 'no':
-                cancelation(feature[0]) # Show cancelation massage
-                return
-            else:
-                print("Invalid choice. Please enter 'yes' or 'no'.")
+            while True:
+                confirm = input(f"\nAre you sure you want to add {full_name} to the employee list? (yes/no): ").strip().lower()
+                if confirm == 'yes':
+                    employees.append([first_name, last_name, role, division, years_employed])
+                    success(feature[0]) # Show successful massage
+                    return  # Exit the loop if all data is valid
+                elif confirm == 'no':
+                    cancelation(feature[0]) # Show cancelation massage
+                    return
+                else:
+                    print("Invalid choice. Please enter 'yes' or 'no'.")
+                    
         except ValueError as e:
             print("Error:", e)
 
@@ -217,80 +218,104 @@ def delete_employee():
 
 # Function to update employee information
 def update_employee():
-    try:
-        if not employees:
-            print("No employees in the list.")
-            return
-        print("\nList of Employees:")
-        headers = header
-        print(tabulate(employees, headers=headers, tablefmt="grid", showindex='always'))
-        
-        index = input("Enter the index of the employee to update (type 'exit' to cancel): ")
-        if index.lower() == 'exit':
-                cancelation(feature[2]) # Show cancelation massage
+    while True:
+        try:
+            if not employees:
+                print("No employees in the list.")
                 return
-        index = int(index)
-        
-        if index < 0 or index >= len(employees):
-            raise ValueError("Invalid index.")
-        
-        employee = employees[index]
-        print(f"\nUpdating information for employee: {employee[0]} {employee[1]}")
-
-        new_first_name = input("Enter new first name (leave empty to keep current or type 'exit' to cancel): ").strip().title()
-        if new_first_name.lower() == 'exit':
-                cancelation(feature[2]) # Show cancelation massage
-                return
-        
-        new_last_name = input("Enter new last name (leave empty to keep current or type 'exit' to cancel): ").strip().title()
-        if new_last_name.lower() == 'exit':
-                cancelation(feature[2]) # Show cancelation massage
-                return
-        
-        new_role = input("Enter new role (leave empty to keep current or type 'exit' to cancel): ").strip().title()
-        if new_role.lower() == 'exit':
-                cancelation(feature[2]) # Show cancelation massage
-                return
-        
-        new_division = input("Enter new division (leave empty to keep current or type 'exit' to cancel): ").strip().title()
-        if new_division.lower() == 'exit':
-                cancelation(feature[2]) # Show cancelation massage
-                return
-        
-        new_years_employed = input("Enter new years employed (leave empty to keep current or type 'exit' to cancel): ").strip()
-        if new_years_employed.lower() == 'exit':
-                cancelation(feature[2]) # Show cancelation massage
-                return
-        
-        # Generate summary of user input
-        generate_input_summary(First_name=new_first_name or employee[0], 
-                                Last_name=new_last_name or employee[1], 
-                                Role=new_role or employee[2], 
-                                Division=new_division or employee[3], 
-                                Years_employed=new_years_employed or employee[4])
-        
-        confirm = input(f"Are you sure you want to update this information? (yes/no): ").strip().lower()
-        if confirm == 'yes':
-            if new_first_name:
-                employee[0] = new_first_name
-            if new_last_name:
-                employee[1] = new_last_name
-            if new_role:
-                employee[2] = new_role
-            if new_division:
-                employee[3] = new_division
-            if new_years_employed:
-                employee[4] = int(new_years_employed)
+            print("\nList of Employees:")
+            headers = header
+            print(tabulate(employees, headers=headers, tablefmt="grid", showindex='always'))
             
-            print("Employee information updated successfully.")
-        elif confirm == 'no':
-            print("Employee information update cancelled.")
-            return
-        else:
-            print("Invalid choice. Please enter 'yes' or 'no'.")
-    except (ValueError, IndexError):
-        print("Invalid input. Please enter a number between 0 and", len(employees) - 1, " or 'exit' to cancel.")
- 
+            index = input("Enter the index of the employee to update (type 'exit' to cancel): ")
+            if index.lower() == 'exit':
+                    cancelation(feature[2]) # Show cancelation massage
+                    return
+            index = int(index)
+            
+            if index < 0 or index >= len(employees):
+                raise ValueError("Invalid input. Please enter a number between 0 and", len(employees) - 1, " or 'exit' to cancel.")
+            
+            employee = employees[index]
+            print(f"\nUpdating information for employee: {employee[0]} {employee[1]}")
+            
+            # Prompt for new first name
+            while True:
+                new_first_name = input("Enter new first name (leave empty to keep current or type 'exit' to cancel): ").strip().title()
+                if new_first_name.lower() == 'exit':
+                        cancelation(feature[2]) # Show cancelation massage
+                        return
+                if new_first_name and not new_first_name.strip().isalpha():
+                    print("First name must contain only alphabetic characters.")
+                else:
+                    break
+            
+            # Prompt for new last name
+            while True:
+                new_last_name = input("Enter new last name (leave empty to keep current or type 'exit' to cancel): ").strip().title()
+                if new_last_name.lower() == 'exit':
+                        cancelation(feature[2]) # Show cancelation massage
+                        return
+                if new_last_name and not new_last_name.strip().isalpha():
+                    print("Last name must contain only alphabetic characters.")
+                else:
+                    break
+            
+            new_full_name = f"{new_first_name} {new_last_name}"
+            for emp in employees:
+                if f"{emp[0]} {emp[1]}" == new_full_name:
+                    raise ValueError(f"Employee named {new_first_name} {new_last_name} already exists.")
+            
+            # Prompt for new role
+            new_role = input("Enter new role (leave empty to keep current or type 'exit' to cancel): ").strip().title()
+            if new_role.lower() == 'exit':
+                    cancelation(feature[2]) # Show cancelation massage
+                    return
+        
+            # Prompt for new division
+            new_division = input("Enter new division (leave empty to keep current or type 'exit' to cancel): ").strip().title()
+            if new_division.lower() == 'exit':
+                    cancelation(feature[2]) # Show cancelation massage
+                    return
+            
+            # Prompt for new years employed
+            new_years_employed = input("Enter new years employed (leave empty to keep current or type 'exit' to cancel): ").strip()
+            if new_years_employed.lower() == 'exit':
+                    cancelation(feature[2]) # Show cancelation massage
+                    return
+            if new_years_employed:
+                if not new_years_employed.isdigit():
+                    raise ValueError("Years employed must be a positive integer.")
+                new_years_employed = int(new_years_employed)
+            
+            # Generate summary of user input
+            generate_input_summary(First_name=new_first_name or employee[0], 
+                                    Last_name=new_last_name or employee[1], 
+                                    Role=new_role or employee[2], 
+                                    Division=new_division or employee[3], 
+                                    Years_employed=new_years_employed or employee[4])
+            
+            confirm = input(f"Are you sure you want to update this information? (yes/no): ").strip().lower()
+            if confirm == 'yes':
+                if new_first_name:
+                    employee[0] = new_first_name
+                if new_last_name:
+                    employee[1] = new_last_name
+                if new_role:
+                    employee[2] = new_role
+                if new_division:
+                    employee[3] = new_division
+                if new_years_employed:
+                    employee[4] = new_years_employed
+                
+                print("Employee information updated successfully.")
+            elif confirm == 'no':
+                print("Employee information update cancelled.")
+                return
+            else:
+                print("Invalid choice. Please enter 'yes' or 'no'.")
+        except ValueError as e:
+            print("Error:", e) 
 
 # Main function
 def main():
