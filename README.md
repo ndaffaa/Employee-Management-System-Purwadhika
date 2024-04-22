@@ -10,3 +10,12 @@ This is a simple Employee Management System written in Python. It allows users t
 - **Update Employee Information**: Modify the details of an employee.
 - **Sorting**: Sort the list of employees based on different criteria such as first name, last name, role, division, and years employed.
 - **View Employee Details**: View detailed information about a specific employee.
+
+## Flow Chart 
+### Employee Management System Menu
+![Employee Management System Menu](https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/0f09a9af-514d-49e1-9126-bab5ad0d94c4)
+
+### Show List Employee
+![Show List Employee](https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/288aff02-dd94-4c0f-9147-33d843fb233f)
+
+
