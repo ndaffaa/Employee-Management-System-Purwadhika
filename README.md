@@ -13,7 +13,8 @@ This is a simple Employee Management System written in Python. It allows users t
 
 ## Flow Chart 
 ### Employee Management System Menu
-![Employee Management System Menu](https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/0f09a9af-514d-49e1-9126-bab5ad0d94c4)
+
+<img width="500" src=![Employee Management System Menu](https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/0f09a9af-514d-49e1-9126-bab5ad0d94c4)>
 
 ### Show List Employee
 ![Show List Employee](https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/288aff02-dd94-4c0f-9147-33d843fb233f)
