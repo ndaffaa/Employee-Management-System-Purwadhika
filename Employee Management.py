@@ -206,19 +206,19 @@ def delete_employee():
             # Generate summary of user input
             generate_input_summary(First_name=employee[0], Last_name=employee[1], Role=employee[2], Division=employee[3], Years_employed=employee[4])
     
-            confirm = input(f"\nAre you sure you want to delete {employee[0]} {employee[1]} from the employee list? (yes/no): ").strip().lower()
-            if confirm == 'yes':
-                employee = employees.pop(index)
-                print(f"Employee '{employee[0]} {employee[1]}' deleted successfully.")
-                break
-            elif confirm == 'no':
-                cancelation(feature[1]) # Show cancelation massage
-                return
-            else:
-                print("Invalid choice. Please enter 'yes' or 'no'.")
+            while True:
+                confirm = input(f"\nAre you sure you want to delete {employee[0]} {employee[1]} from the employee list? (yes/no): ").strip().lower()
+                if confirm == 'yes':
+                    employee = employees.pop(index)
+                    print(f"Employee '{employee[0]} {employee[1]}' deleted successfully.")
+                    return
+                elif confirm == 'no':
+                    cancelation(feature[1]) # Show cancelation massage
+                    return
+                else:
+                    print("Invalid choice. Please enter 'yes' or 'no'.")
         except (ValueError, IndexError):
             print("Invalid input. Please enter a number between 0 and", len(employees) - 1, " or 'exit' to cancel.")
-
 
 # Function to update employee information
 def update_employee():
