@@ -314,6 +314,7 @@ def update_employee():
                         employee[4] = new_years_employed
                     
                     print("Employee information updated successfully.")
+                    break
                 elif confirm == 'no':
                     print("Employee information update cancelled.")
                     return
