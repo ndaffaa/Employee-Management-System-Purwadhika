@@ -90,15 +90,18 @@ def display_employee_table(employee_data):
                     print("No employees in the list.")
             break
         elif action == "2":
-            try:
-                index = int(input("Enter the employee number to view details: "))
-                if 0 <= index < len(employee_data):  # Changed condition from <= to <
-                    employee = employee_data[index]
-                    generate_input_summary(First_name=employee[0], Last_name=employee[1], Role=employee[2], Division=employee[3], Years_employed=employee[4])
-                else:
-                    print("Invalid employee number. Please enter a number between 0 and", len(employee_data) - 1)  # Added instruction for valid input range
-            except ValueError:
-                print("Invalid input. Please enter a number.")
+            while True:
+                try:
+                    index = int(input("Enter the employee number to view details: "))
+                    if 0 <= index < len(employee_data):  # Changed condition from <= to <
+                        employee = employee_data[index]
+                        generate_input_summary(First_name=employee[0], Last_name=employee[1], Role=employee[2], Division=employee[3], Years_employed=employee[4])
+                        break
+                    else:
+                        print("Invalid employee number. Please enter a number between 0 and", len(employee_data) - 1)  # Added instruction for valid input range
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+            continue
         elif action == "3":
             break
         else:
