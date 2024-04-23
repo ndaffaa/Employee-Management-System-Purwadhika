@@ -6,7 +6,7 @@ employees = [
     ["Siti", "Rahayu", "Human Resources Manager", "HR", 5],
     ["Agus", "Setiawan", "Marketing Executive", "Marketing", 7],
     ["Rini", "Susanti", "Accountant", "Finance", 2],
-    ["Ani", "Wijaya", "Sales Representative", "Sales", 1],
+    ["Fatika", "Soraya", "Sales Representative", "Sales", 1],
     ['Naufal', 'Daffa', 'Data Scientist', 'Data', 10],
     ['Ayu', 'Widya', 'Software Engineer', 'Engineering', 3],
     ['Serenande', '', 'Human Resources Staff', 'HR', 2],
