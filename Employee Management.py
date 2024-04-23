@@ -295,25 +295,26 @@ def update_employee():
                                     Division=new_division or employee[3], 
                                     Years_employed=new_years_employed or employee[4])
             
-            confirm = input(f"Are you sure you want to update this information? (yes/no): ").strip().lower()
-            if confirm == 'yes':
-                if new_first_name:
-                    employee[0] = new_first_name
-                if new_last_name:
-                    employee[1] = new_last_name
-                if new_role:
-                    employee[2] = new_role
-                if new_division:
-                    employee[3] = new_division
-                if new_years_employed:
-                    employee[4] = new_years_employed
-                
-                print("Employee information updated successfully.")
-            elif confirm == 'no':
-                print("Employee information update cancelled.")
-                return
-            else:
-                print("Invalid choice. Please enter 'yes' or 'no'.")
+            while True:
+                confirm = input(f"Are you sure you want to update this information? (yes/no): ").strip().lower()
+                if confirm == 'yes':
+                    if new_first_name:
+                        employee[0] = new_first_name
+                    if new_last_name:
+                        employee[1] = new_last_name
+                    if new_role:
+                        employee[2] = new_role
+                    if new_division:
+                        employee[3] = new_division
+                    if new_years_employed:
+                        employee[4] = new_years_employed
+                    
+                    print("Employee information updated successfully.")
+                elif confirm == 'no':
+                    print("Employee information update cancelled.")
+                    return
+                else:
+                    print("Invalid choice. Please enter 'yes' or 'no'.")
         except ValueError as e:
             print("Error:", e) 
 
