@@ -58,34 +58,36 @@ def display_employee_table(employee_data):
         action = input('''\nChoose an action:\n1. Sort the list\n2. View employee details\n3. Return to main menu\nEnter your choice: ''').strip()
         
         if action == "1":
-            print("\nSorting Options:")
-            print("1. First Name")
-            print("2. Last Name")
-            print("3. Role")
-            print("4. Division")
-            print("5. Years Employed")
-            choice = input("Enter your choice (type 'back' to back): ").strip()
-            if choice == "1":
-                criteria = "first name"
-            elif choice == "2":
-                criteria = "last name"
-            elif choice == "3":
-                criteria = "role"
-            elif choice == "4":
-                criteria = "division"
-            elif choice == "5":
-                criteria = "years employed"
-            elif choice == 'back':
-                continue
-            else:
-                print("Invalid choice, please input correct answer.")
-                continue
-            sorted_employees = sort_employees(criteria, employee_data)
-            if sorted_employees:
-                print("Sorted Employees:")
-                display_employee_table(sorted_employees)
-            else:
-                print("No employees in the list.")
+            while True:
+                print("\nSorting Options:")
+                print("1. First Name")
+                print("2. Last Name")
+                print("3. Role")
+                print("4. Division")
+                print("5. Years Employed")
+                choice = input("Enter your choice by index (type 'back' to go back): ").strip()
+                if choice == "1":
+                    criteria = "first name"
+                elif choice == "2":
+                    criteria = "last name"
+                elif choice == "3":
+                    criteria = "role"
+                elif choice == "4":
+                    criteria = "division"
+                elif choice == "5":
+                    criteria = "years employed"
+                elif choice == 'back':
+                    break
+                else:
+                    print("Invalid choice, please input correct answer.")
+                    continue
+                sorted_employees = sort_employees(criteria, employee_data)
+                if sorted_employees:
+                    print("Sorted Employees:")
+                    display_employee_table(sorted_employees)
+                    break
+                else:
+                    print("No employees in the list.")
             break
         elif action == "2":
             try:
@@ -101,7 +103,6 @@ def display_employee_table(employee_data):
             break
         else:
             print("Invalid choice. Please enter 1, 2, or 3.")
-
 
 # Function to display the list of employees
 def display_employees():
