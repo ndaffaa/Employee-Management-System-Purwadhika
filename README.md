@@ -31,7 +31,8 @@ This is a simple Employee Management System written in Python. It allows users t
 ![Delete Employee](https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/061a16b2-488b-465c-ac95-148c64ecf4bf)
 
 ### Update Employee
-![Update Employee](https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/7a309dfa-bf4c-4dda-a936-de9acb1aff31)
+![Update Employee](https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/9f7c3add-d05f-46a3-aa3a-d60df40cede5)
+
 
 
 
