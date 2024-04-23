@@ -33,6 +33,14 @@ This is a simple Employee Management System written in Python. It allows users t
 ### Update Employee
 <img src="https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/9f7c3add-d05f-46a3-aa3a-d60df40cede5" alt="Update Employee" width="700">
 
+## How to Use
+1. Make sure you have Python installed on your computer.
+2. Install the tabulate module by running `pip install tabulate` in your terminal or command prompt
+3. Download or copy this project to your computer.
+4. Open the project folder in your terminal or command prompt
+5. Run the program by typing `main.py`
+6. Follow the instructions on the screen to navigate through the menus
+
 
 
 
