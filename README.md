@@ -25,7 +25,6 @@ This is a simple Employee Management System written in Python. It allows users t
 <img src="https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/e13ce327-a33d-4fb0-9e12-15569394c5eb" alt="View Employee Detail" width="700">
 
 ### Add Employee
-![Add Employee]()
 <img src="https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/4e2ff419-0815-4c4c-baea-7b1e397c9538" alt="Add Employee" width="700">
 
 ### Delete Employee
