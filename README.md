@@ -11,6 +11,18 @@ This is a simple Employee Management System written in Python. It allows users t
 - **Sorting**: Sort the list of employees based on different criteria such as first name, last name, role, division, and years employed.
 - **View Employee Details**: View detailed information about a specific employee.
 
+## Built With
+This project was completely built using the tools:
+
+- Python 3.x
+- Tabulate Library
+
+## Installation
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Malik0-0/Travel-Journal-CRUD-.git
+   ```
+
 ## Flow Chart 
 ### Employee Management System Menu
 <img src="https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/0f09a9af-514d-49e1-9126-bab5ad0d94c4" alt="Employee Management System Menu" width="700">
@@ -34,12 +46,18 @@ This is a simple Employee Management System written in Python. It allows users t
 <img src="https://github.com/ndaffaa/Employee-Management-System-Purwadhika/assets/100851606/9f7c3add-d05f-46a3-aa3a-d60df40cede5" alt="Update Employee" width="700">
 
 ## How to Use
-1. Make sure you have Python installed on your computer.
+1. Make sure you have Python 3.x installed on your computer.
 2. Install the tabulate module by running `pip install tabulate` in your terminal or command prompt
 3. Download or copy this project to your computer.
 4. Open the project folder in your terminal or command prompt
-5. Run the program by typing `main.py`
+5. Run the program by typing `Employee Management.py`
 6. Follow the instructions on the screen to navigate through the menus
+
+<!-- CONTACT -->
+
+## Contact
+
+Naufal Daffa Abdurahman - ndaffaabdurahman@gmail.com
 
 
 
