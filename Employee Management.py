@@ -15,8 +15,10 @@ employees = [
     ['Juan', 'Dharmaji', "Head of Finance", 'Finance', 5]
 ]
 
+# Table headers for the employee data
 header = ["First Name", "Last Name", "Role", "Division", "Years Employed"]
 
+# List of features for cancellation and success messages
 feature = ["Employee addition", "Employee deletion", "Employee update"]
 
 # Function to print cancelation massage
